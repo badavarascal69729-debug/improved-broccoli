@@ -62,6 +62,15 @@ jobs:
           file: "skills.js"
           search: "function calculateNumbers"
 
+      # Pull latest changes to avoid push conflicts
+      - name: Pull latest changes
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "github-actions[bot]"
+          git fetch origin main
+          git checkout main
+          git pull --no-edit origin main
+
       # In README.md, switch step 2 for step 3.
       - name: Update to step 3
         uses: skills/action-update-step@v2
